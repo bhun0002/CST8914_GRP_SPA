@@ -63,6 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
           messageContainer.textContent = "Please enter a valid email address.";
           messageContainer.classList.remove("hidden");
           messageContainer.classList.add("alert-danger");
+           // Remove the error message after 60 seconds
+           setTimeout(() => {
+            messageContainer.textContent = "";
+            messageContainer.classList.add("hidden");
+            messageContainer.classList.remove("alert-danger");
+        }, 60000); // 60 seconds in milliseconds
+
           emailField.focus();
           return; // Stop the submission process
       }
@@ -72,6 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
       messageContainer.classList.remove("hidden");
       messageContainer.classList.remove("alert-danger");
       messageContainer.classList.add("alert-success");
+      // Remove the success message after 60 seconds
+      setTimeout(() => {
+        messageContainer.textContent = "";
+        messageContainer.classList.add("hidden");
+        messageContainer.classList.remove("alert-success");
+    }, 60000); // 60 seconds in milliseconds
 
       // Reset the form
       form.reset();
