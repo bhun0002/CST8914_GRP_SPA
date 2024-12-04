@@ -392,3 +392,24 @@ body {
 .schedule-cl img{
   height: 135px;
 }
+
+/* Skip Link Styling */
+.skip-nav {
+  position: absolute;
+  top: -40px; /* Hides it above the viewport initially */
+  left: 200px;
+  background-color: #1e1d1d; /* Dark background */
+  color: #ebe4e4; /* White text for contrast */
+  padding: 7px 15px;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  z-index: 1000; /* Ensures it appears above other elements */
+  transition: top 0.3s ease; /* Smooth transition for visibility */
+}
+
+.skip-nav:focus {
+  top: 10px; /* Moves it into the viewport when focused */
+  outline: 2px solid #000000; /* White outline for visibility */
+  outline-offset: 2px;
+}

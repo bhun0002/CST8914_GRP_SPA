@@ -35,8 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
     tabBtns.forEach((btn) => btn.addEventListener("click", selectTab));
  
   
+  // === "Skip to Main Content" Link Logic ===
+  const skipLink = document.querySelector(".skip-nav");
+  if (skipLink) {
+    skipLink.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default anchor behavior
 
-    // Show/Hide Event Description
+      const homeTabBtn = document.getElementById("homeTabBtn");
+      const homeTabPanel = document.getElementById("homeTabPanel");
+
+      // Trigger tab selection
+      homeTabBtn.click();
+
+      // Focus on the main content for accessibility
+      homeTabPanel.focus();
+    });
+  }
+
+    // === Show/Hide Event Description Logic ===
     const inviteSpeakerCheckbox = document.getElementById("invite-speaker");
     const eventDescription = document.getElementById("event-description");
     const eventLabel = document.getElementById("event-label");
@@ -51,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Form submission
+  // === Form Submission Logic ===
     const form = document.getElementById("schedule-form");
 
     // Message container
@@ -115,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
     });
 
-
+  // === Modal Accessibility Logic ===
     const custButton = document.getElementById("cust_btn");
     const modalElement = document.getElementById("meetCommunityButton");
     
@@ -145,25 +161,5 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
 
-    // const custButton = document.getElementById("cust_btn");
-    // const modalElement = document.getElementById("meetCommunityButton");
-
-    // if (custButton && modalElement) {
-    //     // Initialize the Bootstrap modal instance
-    //     const bootstrapModal = new bootstrap.Modal(modalElement);
-
-    //     // Optional: Log when modal is shown or hidden
-    //     modalElement.addEventListener("shown.bs.modal", () => {
-    //         console.log("Modal is now visible");
-    //     });
-
-    //     modalElement.addEventListener("hidden.bs.modal", () => {
-    //         console.log("Modal is now hidden");
-    //     });
-
-    //     // Open modal programmatically (optional)
-    //     custButton.addEventListener("click", () => {
-    //         bootstrapModal.show();
-    //     });
-    // }
+ 
 });
