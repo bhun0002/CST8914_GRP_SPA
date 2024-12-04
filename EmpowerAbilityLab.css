@@ -370,8 +370,25 @@ body {
   color: #155724;
   border: 1px solid #c3e6cb;
 }
-.logo-right {
-  max-width: 150px;
-  float: right;
-  margin-left: 10px;
+
+.services-cl{
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 10px;
+}
+.services-cl img{
+  height: 135px;
+}
+
+.schedule-cl{
+  height: 100px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 10px;
+  margin-right: 100px;
+}
+.schedule-cl img{
+  height: 135px;
 }
