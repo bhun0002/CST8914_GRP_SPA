@@ -44,15 +44,17 @@ body {
     font-weight: bold;
   }
   
-  .nav-links {
+  .tabList {
     list-style: none;
     display: flex;
     gap: 1.5rem;
     margin: 0;
     padding: 0;
   }
-  
-  .nav-links .tab-link {
+  .tabPanel.active {
+    display: block;
+  }
+  .tabList .tabBtn {
     /* color: white; */
     text-decoration: none;
     font-size: 1rem;
@@ -64,8 +66,8 @@ body {
     cursor: pointer;
   }
   
-  .nav-links .tab-link:hover,
-  .nav-links .tab-link.active {
+  .tabList .tabBtn:hover,
+  .tabList .tabBtn.active {
     background-color: #26374a; /* Highlight background for active or hover states */
     color: #ffff;
     text-decoration: none;
