@@ -172,6 +172,9 @@ body {
   /* Accessibility Features */
   .hidden {
     display: none;
+    position: absolute;
+    opacity: 0; /* Keeps it accessible but hidden visually */
+    left: -9999px; /* Moves it off-screen */
   }
   
   fieldset {
@@ -349,6 +352,19 @@ body {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.hidden {
-  display: none;
+.alert {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Message container
     const messageContainer = document.createElement("div");
-    messageContainer.id = "form-message";
+    messageContainer.id = "form-error";
     messageContainer.className = "alert hidden";
     form.insertAdjacentElement("beforebegin", messageContainer);
 
