@@ -13,7 +13,7 @@
 <body>
   <!-- Accessibility Improvement: Added Skip Link -->
 
-  <a href="#homeTabPanel" class="skip-nav" aria-label="Skip to main content">Skip to main content</a>
+  <a href="#PageMainContent" class="skip-nav" aria-label="Skip to main content">Skip to main content</a>
   <header>
     <div class="navbar">
       <!-- Logo -->
@@ -24,24 +24,24 @@
       <nav>
         <ul class="tabList" role="tablist" aria-label="Sample Tabs">
           <li role="presentation">
-            <button id="homeTabBtn" class="tabBtn active" data-tab="home" role="tab" aria-selected="true"
-              aria-controls="homeTabPanel">Home</button>
+            <a href="#homeTabPanel" id="homeTabBtn" class="tabBtn active" data-tab="home" role="tab" aria-selected="true"
+              aria-controls="homeTabPanel">Home</a>
           </li>
           <li role="presentation">
-            <button id="servicesTabBtn" class="tabBtn" data-tab="services" role="tab" aria-selected="false"
-              aria-controls="servicesTabPanel">Services</button>
+            <a href="#servicesTabPanel" id="servicesTabBtn" class="tabBtn" data-tab="services" role="tab" aria-selected="false"
+              aria-controls="servicesTabPanel">Services</a>
           </li>
           <li role="presentation">
-            <button id="scheduleTabBtn" class="tabBtn" data-tab="schedule" role="tab" aria-selected="false"
-              aria-controls="scheduleTabPanel">Schedule a Call</button>
+            <a href="#scheduleTabPanel" id="scheduleTabBtn" class="tabBtn" data-tab="schedule" role="tab" aria-selected="false"
+              aria-controls="scheduleTabPanel">Schedule a Call</a>
           </li>
         </ul>
-
+       
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="PageMainContent">
     <div class="panels">
       <!-- Home Section Begin -->
       <div id="homeTabPanel" role="tabpanel" aria-labelledby="homeTabBtn" class="tabPanel" aria-hidden="false"

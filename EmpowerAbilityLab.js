@@ -1,38 +1,106 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const tabLinks = Array.from(document.querySelectorAll(".tabBtn"));
+  const tabPanels = Array.from(document.querySelectorAll(".tabPanel"));
 
-    const tabBtns = Array.from(document.querySelectorAll(".tabBtn"));
-    const tabPanels = Array.from(document.querySelectorAll(".tabPanel"));
-  
-    function selectTab(e) {
-      const selectedTabBtn = e.target;
-      const selectedPanelId = selectedTabBtn.dataset.tab + "TabPanel";
-  
-      // Loop through all tab buttons and panels
-      tabBtns.forEach((btn) => {
-        const panelId = btn.dataset.tab + "TabPanel";
-        const panel = document.getElementById(panelId);
-  
-        if (btn === selectedTabBtn) {
-          // Activate the selected tab and panel
-          btn.classList.add("active");
-          btn.setAttribute("aria-selected", "true");
-          panel.classList.remove("hidden");
-          panel.classList.add("active");
-          panel.setAttribute("aria-hidden", "false");
-        } else {
-          // Deactivate other tabs and panels
-          btn.classList.remove("active");
-          btn.setAttribute("aria-selected", "false");
-          panel.classList.add("hidden");
-          panel.classList.remove("active");
-          panel.setAttribute("aria-hidden", "true");
-        }
-      });
+  // Map of tab IDs to their corresponding page titles
+    const pageTitles = {
+      home: "Empower Ability Labs - Home",
+      services: "Empower Ability Labs - Services",
+      schedule: "Empower Ability Labs - Schedule a Call",
+    };
+
+  function selectTab(tabId, pushState = true) {
+    const selectedTabLink = document.querySelector(`[data-tab="${tabId}"]`);
+    const selectedPanelId = tabId + "TabPanel";
+
+    // Loop through all tab links and panels
+    tabLinks.forEach((link) => {
+      const panelId = link.dataset.tab + "TabPanel";
+      const panel = document.getElementById(panelId);
+
+      if (link === selectedTabLink) {
+        // Activate the selected tab and panel
+        link.classList.add("active");
+        link.setAttribute("aria-selected", "true");
+        panel.classList.remove("hidden");
+        panel.classList.add("active");
+        panel.setAttribute("aria-hidden", "false");
+      } else {
+        // Deactivate other tabs and panels
+        link.classList.remove("active");
+        link.setAttribute("aria-selected", "false");
+        panel.classList.add("hidden");
+        panel.classList.remove("active");
+        panel.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    // Update browser history
+    if (pushState) {
+      history.pushState({ tabId }, "", `#${tabId}`);
     }
+    
+    // Update the page title
+     document.title = pageTitles[tabId] || "Empower Ability Labs";
+  }
+
+  // Attach click event to tab links
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      const tabId = link.dataset.tab;
+      selectTab(tabId);
+    });
+  });
+
+  // Handle "Back" and "Forward" button navigation
+  window.addEventListener("popstate", (event) => {
+    const state = event.state;
+    if (state && state.tabId) {
+      selectTab(state.tabId, false); // Don't push state again
+    } else {
+      // Default to the first tab if no state is available
+      selectTab(tabLinks[0].dataset.tab, false);
+    }
+  });
+
+  // Initialize the tab based on the URL hash or default to the first tab
+  const initialTabId = window.location.hash.substring(1) || tabLinks[0].dataset.tab;
+  selectTab(initialTabId, false);
+
+    // const tabBtns = Array.from(document.querySelectorAll(".tabBtn"));
+    // const tabPanels = Array.from(document.querySelectorAll(".tabPanel"));
   
-    // Attach click event to tab buttons
-    tabBtns.forEach((btn) => btn.addEventListener("click", selectTab));
+    // function selectTab(e) {
+    //   const selectedTabBtn = e.target;
+    //   const selectedPanelId = selectedTabBtn.dataset.tab + "TabPanel";
+  
+    //   // Loop through all tab buttons and panels
+    //   tabBtns.forEach((btn) => {
+    //     const panelId = btn.dataset.tab + "TabPanel";
+    //     const panel = document.getElementById(panelId);
+  
+    //     if (btn === selectedTabBtn) {
+    //       // Activate the selected tab and panel
+    //       btn.classList.add("active");
+    //       btn.setAttribute("aria-selected", "true");
+    //       panel.classList.remove("hidden");
+    //       panel.classList.add("active");
+    //       panel.setAttribute("aria-hidden", "false");
+    //     } else {
+    //       // Deactivate other tabs and panels
+    //       btn.classList.remove("active");
+    //       btn.setAttribute("aria-selected", "false");
+    //       panel.classList.add("hidden");
+    //       panel.classList.remove("active");
+    //       panel.setAttribute("aria-hidden", "true");
+    //     }
+    //   });
+    // }
+  
+    // // Attach click event to tab buttons
+    // tabBtns.forEach((btn) => btn.addEventListener("click", selectTab));
  
   
   // === "Skip to Main Content" Link Logic ===
